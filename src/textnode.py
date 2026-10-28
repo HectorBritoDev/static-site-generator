@@ -1,7 +1,14 @@
 from enum import Enum
 
-
 class TextType(Enum):
+    PLAIN = 'plain'
+    BOLD = 'bold'
+    ITALIC = 'italic'
+    CODE = 'code'
+    LINK = 'link'
+    IMAGE = 'image'
+
+class MarkdownType(Enum):
     PLAIN = ""
     BOLD = "**"
     ITALIC = "_"
@@ -22,9 +29,7 @@ class TextNode:
         return self.text == value.text and self.text_type.value == value.text_type.value and self.url == value.url
 
     def __repr__(self):
-        print(f'OK these are the values {self.text}, {self.text_type}, {self.url}')
-        return self.getTextWrapper(self.text, self.text_type, self.url)
-
+        return f"{type(self).__name__}({self.text}, {self.text_type.value}, {self.url})"
 
     def getTextWrapper(self, text: str, type: TextType, url: str):
         match type:
