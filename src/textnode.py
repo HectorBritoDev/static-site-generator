@@ -20,15 +20,17 @@ class MarkdownType(Enum):
 TEXT_REPLACEMENT_KEYWORD = "TEXT_HERE"
 
 class TextNode:
-    def __init__(self, text: str, text_type: str, url:str):
+    def __init__(self, text: str, text_type: TextType, url: str | None = None) -> None:
         self.text = text
         self.text_type = text_type
         self.url = url
     
-    def __eq__(self, value: TextNode):
+    def __eq__(self, value: object) -> bool:
+        if not isinstance(value, TextNode):
+            return False 
         return self.text == value.text and self.text_type.value == value.text_type.value and self.url == value.url
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{type(self).__name__}({self.text}, {self.text_type.value}, {self.url})"
 
     def getTextWrapper(self, text: str, type: TextType, url: str):
