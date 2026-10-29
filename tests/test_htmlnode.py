@@ -23,6 +23,17 @@ class TestHTMLNode(unittest.TestCase):
             node.props_to_html(),
             ' class="greeting" href="https://boot.dev"',
         )
+    
+    def test_to_html_props_fail(self):
+        node = HTMLNode(
+            "div",
+            "Hello, world!",
+        )
+        self.assertEqual(
+            node.props_to_html(),
+            '',
+        )
+        
 
     def test_values(self):
         node = HTMLNode(
