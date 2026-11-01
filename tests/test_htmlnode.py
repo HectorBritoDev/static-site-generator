@@ -2,16 +2,6 @@ import unittest
 from src.htmlnode import HTMLNode
 
 class TestHTMLNode(unittest.TestCase):
-    dummyNode: dict = {
-        'tag': 'p',
-        'value': 'This is a test',
-        'children': [HTMLNode(), HTMLNode()],
-        'props': {
-            "href": "https://www.google.com",
-            "target": "_blank",
-        }
-    } 
-
     def test_to_html_props(self):
         node = HTMLNode(
             "div",
